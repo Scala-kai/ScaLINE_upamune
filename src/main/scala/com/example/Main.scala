@@ -6,15 +6,15 @@ object Main{
   var currentUser:User = _
 
   def createUser(u:User):Boolean = {
-    users.find(user => user.id == u.id) match {
-      case Some(user) => false
-      case None =>
-        users = u :: users
-        true
+    if(isExistUser(u.id) || isExistUser(u.tel) || isExistUser(u.mail)){
+      false
+    }else{
+      users = u :: users
+      true
     }
   }
 
-  def isFoundUser(id:String): Boolean = {
+  def isExistUser(id:String): Boolean = {
     users.find(user => user.id == id) match {
       case Some(u) => true
       case None => users.find(user => user.tel == id) match {

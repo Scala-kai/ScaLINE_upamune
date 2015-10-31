@@ -61,7 +61,7 @@ case class FollowUser(id:String) extends Command{
   // (id) -> id
   override def run(): Unit = {
     val currentUser = Main.currentUser
-    if(!Main.isFoundUser(id)) {
+    if(!Main.isExistUser(id)) {
       println(s"not found $id")
     }else if(id == currentUser.id || id == currentUser.tel || id == currentUser.mail) {
       println("それはあなたです！")
