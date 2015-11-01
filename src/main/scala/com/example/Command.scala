@@ -208,6 +208,9 @@ case class CommandNotFound() extends Command{
         | create create user -> create `id` `name` `tel` `email`
         | change change user -> change `id`
         | send   send message -> send `id` `text`
+        | show   show messages -> show `id`
+        | log    show logs -> log
+        | export export logs -> export
         | list   show your friends -> list
         | who    show who am i -> who
         | follow follow user -> follow `id`
