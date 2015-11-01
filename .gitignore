@@ -5,4 +5,6 @@
 /project/target/
 /target/
 .idea
+*.ipr
+*.iws
 scaline_log_*

@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="fd8f1644-5053-42e1-a308-1a592bfb020b" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/com/example/Command.scala" afterPath="$PROJECT_DIR$/src/main/scala/com/example/Command.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/com/example/Event.scala" afterPath="$PROJECT_DIR$/src/main/scala/com/example/Event.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/com/example/Main.scala" afterPath="$PROJECT_DIR$/src/main/scala/com/example/Main.scala" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/com/example/Message.scala" afterPath="$PROJECT_DIR$/src/main/scala/com/example/Message.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/com/example/User.scala" afterPath="$PROJECT_DIR$/src/main/scala/com/example/User.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/line.ipr" afterPath="$PROJECT_DIR$/line.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/line.iws" afterPath="$PROJECT_DIR$/line.iws" />
     </list>
     <ignored path="line.iws" />
@@ -57,10 +52,11 @@
       <file leaf-file-name="Command.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Command.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60967743">
-              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+            <state vertical-scroll-proportion="0.58064514">
+              <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
               <folding>
                 <element signature="e#21#42#0" expanded="true" />
+                <marker date="1446372413780" expanded="true" signature="3089:3116" placeholder="{...}" />
               </folding>
             </state>
           </provider>
@@ -80,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Message.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -100,9 +96,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/scala/com/example/User.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/com/example/Message.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/com/example/Event.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/com/example/Main.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/com/example/Message.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/com/example/Command.scala" />
       </list>
     </option>
@@ -578,12 +574,12 @@
       <workItem from="1446268106851" duration="13251000" />
       <workItem from="1446291314892" duration="7627000" />
       <workItem from="1446350844682" duration="1876000" />
-      <workItem from="1446353570688" duration="12348000" />
+      <workItem from="1446353570688" duration="14929000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35102000" />
+    <option name="totallyTimeSpent" value="37683000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="31" width="1366" height="737" extended-state="6" />
@@ -658,6 +654,7 @@
           <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
+            <marker date="1446372413780" expanded="true" signature="3089:3116" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -700,6 +697,7 @@
           <caret line="50" column="17" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
+            <marker date="1446372413780" expanded="true" signature="3089:3116" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -742,6 +740,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
+            <marker date="1446372413780" expanded="true" signature="3089:3116" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -772,15 +771,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Message.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Event.scala">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -789,6 +780,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Event.scala">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="26" column="17" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -803,10 +802,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/com/example/Command.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60967743">
-          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state vertical-scroll-proportion="0.58064514">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="25" />
           <folding>
             <element signature="e#21#42#0" expanded="true" />
+            <marker date="1446372413780" expanded="true" signature="3089:3116" placeholder="{...}" />
           </folding>
         </state>
       </provider>
