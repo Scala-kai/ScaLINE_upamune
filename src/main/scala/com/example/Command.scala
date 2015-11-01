@@ -125,11 +125,17 @@ case class ShowMessage(id:String) extends Command{
   def showMessages(user: User, msgEvent:SendMessageEvent): Unit = {
     val msg = msgEvent.msg
     val time = "%tR" format msgEvent.date
-    if(msg.from.id == user.id){
-      val text = s"$time ${msg.text}"
+    if(msg.from.id == user.id) {
+      var text = s"$time ${msg.text}"
+      if(!msg.isNonRead()) {
+        text = "* " + text
+      }
       println(rjust(text, width))
     }else if(msg.to.id == user.id){
-      val text = s"${msg.text} $time"
+      var text = s"${msg.text} $time"
+      if (msg.isNonRead()) {
+        msg.MarkasRead()
+      }
       println(ljust(text, width))
     }
   }
