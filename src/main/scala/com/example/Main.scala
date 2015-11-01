@@ -3,7 +3,34 @@ import scala.io.StdIn.readLine
 
 object Main{
   private [this] var users = List[User]()
+  private [this] var events = List[Event]()
   var currentUser:User = _
+
+  def getEvents(): List[Event] = {
+    events
+  }
+
+  def getUserMessageEvent(from:User, to:User): List[SendMessageEvent] = {
+    var messageEvents = List[SendMessageEvent]()
+
+    for(event <- events){
+      event match {
+        case msgEvent:SendMessageEvent => {
+          val msg = msgEvent.msg
+          if (msg.from.id == from.id && msg.to.id == to.id || msg.from.id == to.id && msg.to.id == from.id) {
+            messageEvents = msgEvent :: messageEvents
+          }
+        }
+        case _ =>
+      }
+    }
+
+    messageEvents
+  }
+
+  def addEvent(e:Event): Unit = {
+    events = e :: events
+  }
 
   def createUser(u:User):Boolean = {
     if(isExistUser(u.id) || isExistUser(u.tel) || isExistUser(u.mail)){
@@ -91,14 +118,18 @@ object Main{
       val changeReg = """change\s(.*?)""".r
       val sendReg = """send\s(.*?)\s(.*)""".r
       val followReg = """follow\s(.*?)""".r
+      val showReg = """show\s(.*)""".r
 
       if (ok) {
         (ln match {
           case createReg(id,name,tel,mail) => CreateUser(id,name,tel,mail)
           case changeReg(id) => ChangeUser(id)
-          case sendReg(id,text) => SendMsg(id,text)
+          case sendReg(id,text) => SendMessage(id,text)
+          case showReg(id) => ShowMessage(id)
           case "list" => ShowFriends()
+          case "export" => ExportLog()
           case "who" => WhoAmI()
+          case "log" => ShowLog()
           case followReg(id) => FollowUser(id)
           case _ => CommandNotFound()
         }).run()

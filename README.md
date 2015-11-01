@@ -13,9 +13,18 @@
 - send
   - send message your friend
   - ex) ``send `id` `text` ``
+- show
+  - show messages
+  - ex) ``show `id` ``
 - list
   - list your friends
   - ex) `list`
+- log
+  - show log events
+  - ex) `log`
+- export
+  - export log events
+  - ex) `export`
 - who
   - who am i ?
   - ex) `who`
