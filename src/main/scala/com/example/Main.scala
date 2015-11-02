@@ -97,12 +97,12 @@ object Main{
   }
 
   def changeUser(id:String): Boolean ={
-    users.find(u => u.id == id) match {
-      case Some(u) =>
-        currentUser = u
-        true
-      case None =>
-        false
+    val u = getUserBy(id)
+    if(u == null) {
+      false
+    }else{
+      currentUser = u
+      true
     }
   }
 
