@@ -8,8 +8,10 @@
   - create user
   - ex) ``create `id` `name` `tel` `email` ``
 - change
-  - change user
-  - ex) ``change `id` ``
+  - change user (you can use id or tel, email)
+  - ex1) ``change `id` ``
+  - ex2) ``change `tel` ``
+  - ex3) ``change `email` ``
 - send
   - send message your friend
   - ex) ``send `id` `text` ``

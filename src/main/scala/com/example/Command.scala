@@ -206,7 +206,7 @@ case class CommandNotFound() extends Command{
     println(
       """COMMANDS:
         | create create user -> create `id` `name` `tel` `email`
-        | change change user -> change `id`
+        | change change user -> change `id`(or `tel` or `email`)
         | send   send message -> send `id` `text`
         | show   show messages -> show `id`
         | log    show logs -> log
