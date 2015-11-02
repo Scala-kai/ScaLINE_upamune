@@ -12,9 +12,4 @@ case class User(id:String, name:String, tel:String, mail:String) {
     friendList = u :: friendList
   }
 
-  def showMessage(): Unit ={
-  }
-
-  def exportLog(): Unit ={
-  }
 }
