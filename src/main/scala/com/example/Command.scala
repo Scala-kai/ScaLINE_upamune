@@ -75,17 +75,16 @@ case class SendMessage(id:String, text:String) extends Command{
     val currentUser = Main.getCurrentUser()
     currentUser match {
       case Some(user) => {
-        val to = user.friendList.find(u => u.id == id) match {
-          case Some(u) => u
-          case None => null
+        user.friendList.find(u => u.id == id) match {
+          case Some(to) => {
+            val msg = Message(user, to, text)
+            val e = SendMessageEvent(msg, new Date())
+            Main.addEvent(e)
+          }
+          case _ => println(s"$id not found in your friend list")
         }
-        val msg = Message(user, to, text)
-        val e = SendMessageEvent(msg, new Date())
-        Main.addEvent(e)
       }
-      case _ => {
-        println(s"$id not found in your friend list")
-      }
+      case _ => println("please change user")
     }
   }
 }
