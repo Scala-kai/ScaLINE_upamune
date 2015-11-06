@@ -68,41 +68,30 @@ object Main{
     }
   }
 
-  def getUserBy(id: String): User = {
-    var user = getUserById(id)
-    if(user == null) user = getUserByMail(id)
-    if(user == null) user = getUserByTel(id)
-    user
+  def getUserBy(id: String): Option[User] = {
+    List(getUserById(id), getUserByTel(id), getUserByMail(id)).flatMap(x => x).distinct.headOption
   }
 
-  def getUserById(id:String): User = {
-    users.find(user => user.id == id) match {
-      case Some(u) => u
-      case None => null
-    }
+  def getUserById(id:String): Option[User] = {
+    users.find(user => user.id == id)
   }
 
-  def getUserByTel(tel:String): User = {
-    users.find(user => user.tel == tel) match {
-      case Some(u) => u
-      case None => null
-    }
+  def getUserByTel(tel:String): Option[User] = {
+    users.find(user => user.tel == tel)
   }
 
-  def getUserByMail(mail:String): User = {
-    users.find(user => user.mail == mail) match {
-      case Some(u) => u
-      case None => null
-    }
+  def getUserByMail(mail:String): Option[User] = {
+    users.find(user => user.mail == mail)
   }
 
   def changeUser(id:String): Boolean ={
     val u = getUserBy(id)
-    if(u == null) {
-      false
-    }else{
-      currentUser = u
-      true
+    u match {
+      case Some(x) => {
+        currentUser = x
+        true
+      }
+      case _ => false
     }
   }
 

@@ -142,20 +142,21 @@ case class ShowMessage(id:String) extends Command{
   override def run(): Unit = {
     // イベントからメッセージイベントだけをしぼりこんで, そのなかでさらに to か from にcurrentUserがふくまれているやつをリストにしてかえす
     val currentUser = Main.currentUser
-    val to = Main.getUserBy(id)
-    if(to == null) {
-      println("message not found")
-      return
-    }
 
-    val messageEvents = Main.getUserMessageEvent(currentUser, to)
-    if (messageEvents.nonEmpty){
-      println(center(s"${to.name}(@${to.id})", width))
-      insertSeparator(width)
-      messageEvents.foreach(msgEvent => showMessages(currentUser, msgEvent))
-      insertSeparator(width)
-    }else {
-      println("Message not found.")
+    Main.getUserBy(id) match {
+      case Some(x) => {
+        val to = x
+        val messageEvents = Main.getUserMessageEvent(currentUser, to)
+        if (messageEvents.nonEmpty){
+          println(center(s"${to.name}(@${to.id})", width))
+          insertSeparator(width)
+          messageEvents.foreach(msgEvent => showMessages(currentUser, msgEvent))
+          insertSeparator(width)
+        }else {
+          println("Message not found.")
+        }
+      }
+      case _ => println("user not found")
     }
   }
 }
@@ -190,12 +191,17 @@ case class FollowUser(id:String) extends Command{
       println("already followed")
     }else {
       val follower = Main.currentUser
-      val followee = Main.getUserBy(id)
-      follower.follow(followee)
-      followee.follow(follower)
-      val e = FollowUserEvent(follower, followee, new Date())
-      Main.addEvent(e)
-      println(s"follow ${followee}")
+      Main.getUserBy(id) match {
+        case Some(x) => {
+          val followee = x
+          follower.follow(followee)
+          followee.follow(follower)
+          val e = FollowUserEvent(follower, followee, new Date())
+          Main.addEvent(e)
+          println(s"follow ${followee}")
+        }
+        case _ =>
+      }
     }
   }
 }
