@@ -42,15 +42,10 @@ object Main{
   }
 
   def isExistUser(id:String): Boolean = {
-    users.find(user => user.id == id) match {
-      case Some(u) => true
-      case None => users.find(user => user.tel == id) match {
-        case Some(u) => true
-        case None => users.find(user => user.mail == id) match {
-          case Some(u) => true
-          case None => false
-        }
-      }
+    val u = getUserBy(id)
+    u match {
+      case Some(x) => true
+      case _ => false
     }
   }
 
