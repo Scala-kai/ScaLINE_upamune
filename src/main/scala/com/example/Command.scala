@@ -14,6 +14,16 @@ sealed trait Command{
 }
 
 case class ExportLog() extends Command {
+  def writeString(fileName: String, body: String): Unit = {
+    val file = new PrintWriter(fileName)
+    try {
+      file.write(body)
+    }finally{
+      file.close
+    }
+
+  }
+
   override def run(): Unit = {
     val events = Main.getEvents()
     val nowSec = "%tQ" format new Date()
@@ -21,11 +31,7 @@ case class ExportLog() extends Command {
     for(event <- events) {
       logs += event.toString + "\n"
     }
-    val file = new PrintWriter(s"scaline_log_$nowSec")
-    if(file != null) {
-      file.write(logs)
-      file.close()
-    }
+    writeString(s"scaline_log_$nowSec", logs)
   }
 }
 
