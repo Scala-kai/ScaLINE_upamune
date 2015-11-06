@@ -4,7 +4,11 @@ import scala.io.StdIn.readLine
 object Main{
   private [this] var users = List[User]()
   private [this] var events = List[Event]()
-  var currentUser:User = _
+  private [this] var currentUser:User = _
+
+  def getCurrentUser(): Option[User] = {
+    Option(currentUser)
+  }
 
   def getEvents(): List[Event] = {
     events
