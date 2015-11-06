@@ -1,16 +1,15 @@
 package com.example
-import scala.io.StdIn.readLine
 
 object Main{
   private [this] var users = List[User]()
   private [this] var events = List[Event]()
   private [this] var currentUser:User = _
 
-  def getCurrentUser(): Option[User] = {
+  def getCurrentUser: Option[User] = {
     Option(currentUser)
   }
 
-  def getEvents(): List[Event] = {
+  def getEvents: List[Event] = {
     events
   }
 
@@ -19,12 +18,11 @@ object Main{
 
     for(event <- events){
       event match {
-        case msgEvent:SendMessageEvent => {
+        case msgEvent:SendMessageEvent =>
           val msg = msgEvent.msg
           if (msg.from.id == from.id && msg.to.id == to.id || msg.from.id == to.id && msg.to.id == from.id) {
             messageEvents = msgEvent :: messageEvents
           }
-        }
         case _ =>
       }
     }
@@ -57,9 +55,8 @@ object Main{
     val user = getUserBy(id)
     val friendList = currentUser.friendList
     user match {
-      case Some(u) => {
+      case Some(u) =>
         friendList.exists(user => user.id == u.id)
-      }
       case _ => false
     }
   }
@@ -83,11 +80,11 @@ object Main{
   def changeUser(id:String): Boolean ={
     val u = getUserBy(id)
     u match {
-      case Some(x) => {
+      case Some(x) =>
         currentUser = x
         true
-      }
-      case _ => false
+      case _ =>
+        false
     }
   }
 

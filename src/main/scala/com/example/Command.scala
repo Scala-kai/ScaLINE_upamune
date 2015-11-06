@@ -19,13 +19,13 @@ case class ExportLog() extends Command {
     try {
       file.write(body)
     }finally{
-      file.close
+      file.close()
     }
 
   }
 
   override def run(): Unit = {
-    val events = Main.getEvents()
+    val events = Main.getEvents
     val nowSec = "%tQ" format new Date()
     var logs = ""
     for(event <- events) {
@@ -50,7 +50,7 @@ case class CreateUser(id:String, name:String, tel:String, mail:String) extends C
 
 case class WhoAmI() extends Command{
   override def run(): Unit = {
-    val currentUser = Main.getCurrentUser()
+    val currentUser = Main.getCurrentUser
     currentUser match {
       case Some(u) => println(u)
       case _ => println("please change user")
@@ -70,7 +70,7 @@ case class ChangeUser(id:String) extends Command{
 
 case class ShowLog() extends Command {
   override def run(): Unit = {
-    val events = Main.getEvents()
+    val events = Main.getEvents
 
     events.foreach(e => println(e))
   }
@@ -78,18 +78,16 @@ case class ShowLog() extends Command {
 
 case class SendMessage(id:String, text:String) extends Command{
   override def run(): Unit = {
-    val currentUser = Main.getCurrentUser()
+    val currentUser = Main.getCurrentUser
     currentUser match {
-      case Some(user) => {
+      case Some(user) =>
         user.friendList.find(u => u.id == id) match {
-          case Some(to) => {
+          case Some(to) =>
             val msg = Message(user, to, text)
             val e = SendMessageEvent(msg, new Date())
             Main.addEvent(e)
-          }
           case _ => println(s"$id not found in your friend list")
         }
-      }
       case _ => println("please change user")
     }
   }
@@ -115,9 +113,9 @@ case class ShowMessage(id:String) extends Command{
 
   def center(s: String, n: Int): String = {
     if (s.length < n) {
-      { ((1 to ((n - s.length) / 2)).map{ _ => " " }.mkString) +
+      { (1 to ((n - s.length) / 2)).map{ _ => " " }.mkString +
         s +
-        ((1 to (n - (((n - s.length) / 2) + s.length))).map{ _ => " "}.mkString)
+        (1 to (n - (((n - s.length) / 2) + s.length))).map{ _ => " "}.mkString
       }
     } else {
       s
@@ -125,8 +123,8 @@ case class ShowMessage(id:String) extends Command{
   }
 
   def insertSeparator(width:Int): Unit = {
-    val separetor = "=" * width
-    println(separetor)
+    val separator = "=" * width
+    println(separator)
   }
 
   def showMessages(user: User, msgEvent:SendMessageEvent): Unit = {
@@ -134,13 +132,13 @@ case class ShowMessage(id:String) extends Command{
     val time = "%tR" format msgEvent.date
     if(msg.from.id == user.id) {
       var text = s"$time ${msg.text}"
-      if(!msg.isNonRead()) {
+      if(!msg.isNonRead) {
         text = "* " + text
       }
       println(rjust(text, width))
     }else if(msg.to.id == user.id){
-      var text = s"${msg.text} $time"
-      if (msg.isNonRead()) {
+      val text = s"${msg.text} $time"
+      if (msg.isNonRead) {
         msg.MarkasRead()
       }
       println(ljust(text, width))
@@ -149,12 +147,12 @@ case class ShowMessage(id:String) extends Command{
 
   override def run(): Unit = {
     // イベントからメッセージイベントだけをしぼりこんで, そのなかでさらに to か from にcurrentUserがふくまれているやつをリストにしてかえす
-    val currentUser = Main.getCurrentUser()
+    val currentUser = Main.getCurrentUser
 
     currentUser match {
-      case Some(user) => {
+      case Some(user) =>
         Main.getUserBy(id) match {
-          case Some(x) => {
+          case Some(x) =>
             val to = x
             val messageEvents = Main.getUserMessageEvent(user, to)
             if (messageEvents.nonEmpty){
@@ -165,10 +163,8 @@ case class ShowMessage(id:String) extends Command{
             }else {
               println("Message not found.")
             }
-          }
           case _ => println("user not found")
         }
-      }
       case _ => println("please change user")
     }
   }
@@ -176,13 +172,12 @@ case class ShowMessage(id:String) extends Command{
 
 case class ShowFriends() extends Command{
   override def run(): Unit = {
-    val currentUser = Main.getCurrentUser()
+    val currentUser = Main.getCurrentUser
     currentUser match {
-      case Some(user) => {
+      case Some(user) =>
         val friendList = user.friendList
         if (friendList.isEmpty) println("friend not found")
         else friendList.foreach(u => println(u))
-      }
       case _ => println("please change user")
     }
   }
@@ -194,10 +189,10 @@ case class FollowUser(id:String) extends Command{
   // contain@(id) -> Email
   // (id) -> id
   override def run(): Unit = {
-    val currentUser = Main.getCurrentUser()
+    val currentUser = Main.getCurrentUser
 
     currentUser match {
-      case Some(user) => {
+      case Some(user) =>
         if(!Main.isExistUser(id)) {
           println(s"not found $id")
         }else if(id == user.id || id == user.tel || id == user.mail) {
@@ -207,18 +202,16 @@ case class FollowUser(id:String) extends Command{
         }else {
           val follower = user
           Main.getUserBy(id) match {
-            case Some(x) => {
+            case Some(x) =>
               val followee = x
               follower.follow(followee)
               followee.follow(follower)
               val e = FollowUserEvent(follower, followee, new Date())
               Main.addEvent(e)
-              println(s"follow ${followee}")
-            }
+              println(s"follow $followee")
             case _ =>
           }
         }
-      }
       case _ => println("please change user")
     }
   }
