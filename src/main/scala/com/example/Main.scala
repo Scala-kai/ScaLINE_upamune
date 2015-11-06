@@ -50,16 +50,13 @@ object Main{
   }
 
   def isFollowed(id:String): Boolean = {
+    val user = getUserBy(id)
     val friendList = currentUser.friendList
-    friendList.find(user => user.id == id) match {
-      case Some(u) => true
-      case None => friendList.find(user => user.tel == id) match {
-        case Some(u) => true
-        case None => friendList.find(user => user.mail == id) match {
-          case Some(u) => true
-          case None => false
-        }
+    user match {
+      case Some(u) => {
+        friendList.exists(user => user.id == u.id)
       }
+      case _ => false
     }
   }
 
