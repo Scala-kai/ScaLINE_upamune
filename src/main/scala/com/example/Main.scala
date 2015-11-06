@@ -92,20 +92,18 @@ object Main{
   }
 
   def main (args: Array[String]){
-    var ok = true
 
-    while (ok) {
-      print("cmd > ")
-      val ln = readLine()
-      ok = ln != null
+    print("cmd > ")
 
-      val createReg = """create\s(.*?)\s(.*?)\s(.*?)\s(.*?)""".r
-      val changeReg = """change\s(.*?)""".r
-      val sendReg = """send\s(.*?)\s(.*)""".r
-      val followReg = """follow\s(.*?)""".r
-      val showReg = """show\s(.*)""".r
+    Iterator.continually(scala.io.StdIn.readLine()).takeWhile(l => l != null).foreach {
+      ln =>
 
-      if (ok) {
+        val createReg = """create\s(.*?)\s(.*?)\s(.*?)\s(.*?)""".r
+        val changeReg = """change\s(.*?)""".r
+        val sendReg = """send\s(.*?)\s(.*)""".r
+        val followReg = """follow\s(.*?)""".r
+        val showReg = """show\s(.*)""".r
+
         (ln match {
           case createReg(id,name,tel,mail) => CreateUser(id,name,tel,mail)
           case changeReg(id) => ChangeUser(id)
@@ -118,7 +116,8 @@ object Main{
           case followReg(id) => FollowUser(id)
           case _ => CommandNotFound()
         }).run()
-      }
+
+        print("cmd > ")
     }
   }
 }
